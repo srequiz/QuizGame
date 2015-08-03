@@ -43,8 +43,10 @@ sequelize.sync().success(function() {
   Quiz.count().success(function (count){
     if(count === 0) {   // la tabla se inicializa solo si está vacía
         Quiz.create({pregunta: 'Capital de Italia',
-                    respuesta: 'Roma'}) // estos quizes pertenecen al usuario pepe (2)
-        .success(function(){console.log('Base de datos (tabla quiz) inicializada')});
+                    respuesta: 'Roma'});
+        Quiz.create({pregunta: 'Capital de Portugal',
+                    respuesta: 'Lisboa'})
+        .then(function(){console.log('Base de datos (tabla quiz) inicializada')});
           };
     });
 });
